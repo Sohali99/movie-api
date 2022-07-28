@@ -1,0 +1,28 @@
+
+<app-searchbar
+(onSearch)="onImageSearch($event)"
+>
+</app-searchbar>
+<div *ngIf="searchkey">
+<ul *ngFor="let item of data">
+  <li>{{item.Title}}</li>
+</ul>
+</div>
+
+<div style="display: flex;">
+    <button class="nextbtn" (click)="setPrevPage()">Prev</button>
+    <button class="nextbtn" (click)="setNextPage()">Next</button>
+</div>
+
+<div style="overflow: scroll"
+    infiniteScroll 
+    (scrolled)="onScroll()"
+   >
+  <div *ngFor="let item of data"> 
+    <app-imgcards
+    imgUrl="{{item.Poster}}"
+    imgTitle="{{item.Title}}"
+    ></app-imgcards>
+
+  </div>
+</div>
